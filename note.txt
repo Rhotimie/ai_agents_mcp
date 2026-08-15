@@ -1,0 +1,100 @@
+models used:
+    - gpt-5.4-nano
+    - gpt-5.4-mini
+    - gpt-5.4
+    
+
+Qualified for:
+    - AI Engineer
+    - Applied AI Engineer
+    - FDE Engineer
+
+https://marketstack.com
+    - allows to retrieve stock prices
+
+https://n8n.io/
+    - build no code agents
+    - Exercise autonomous characteristic of a portfolio
+    - https://user_name.app.n8n.cloud/home/workflows
+        - select "build a workflow"
+        - add chat
+        - add ai agent
+        - Add LLM: gemini
+        - Add memory: simple
+        - Add tool: 
+            - marketstack
+                - select latest filter
+                - Ticker: Defined automatically by the model
+                - selct return all
+            - Google sheet
+                - Description: Get row(s) in sheet in Google Sheets to retrieve my stock portfolio details
+                - Operation: Get rows
+                - Document: Investment, sheet1
+            - Google Sheets
+                - Description: Append row(s) in sheet in Google Sheets in order to add a new trade with a new quantity of your choosing
+                - Operation: Append rows
+                - Document: Investment, sheet1
+                - Values to Send
+                    - Ticker: Defined automatically by the model
+                    - Shares: Defined automatically by the model
+
+        - Chat sequence:
+            - What is the value of my stock portfolio
+                -Actions:
+                    - looks up cmp os per share in marketstack and provides sum total of your investment sheet shares
+            - Please come with a suggestion of an investment to balance up my portfolio. Add your suggestion to my sheet; you decide the ticker and the number of shares
+                -Action:
+                    - Added 10 shares of KO to my portfolio
+            - Yes please add something defensive to balance, of your choosing
+                -Action:
+                    - Added 5 shares of JNJ to my portfolio
+
+LLM: data science model that accepts inputs and generate most probabilistic output sequence
+
+Agents:
+    - AI systems that can do work for you independently
+    - ** AI systems where LLM controls the workflow **
+    - LLM with tools in a loop to achieve a work flow
+
+Agentic system
+    reference:
+        https://www.anthropic.com/engineering/building-effective-agents
+
+    - Agent: are dynamic systems where LLM direct their own processes and tool usage, maining control over how they accomplished task
+        - HUMAN --> LLM  --action-->  Environment
+                        <--feedback--
+                         --stop-->
+        - Example:
+            - claude code, codex, antigravity
+            - gpt agent
+            - sidekick
+        - no pre-defined / fixed code path
+        - open-ended structure
+        - feedback loops
+
+    - workflows: systems where LLM and tools are orchestrated through predefined code path
+        - most common for production systems
+        -Example: 
+            - deep research feature in chatgpt
+            - deep research workflow
+        -Design pattern:
+            - prompt chaining: decomposed into fixed sub task
+                - INPUT --> LLM1 --> GATE --> LLM2 --> LLM3 --> OUT
+            - Routing; Direct input into specialized subtasks, ensuring separation of concerns
+                - INPUT --> LLM ROUTER --> LLM1 / LLM2 / LLM3 --> OUT 
+            - Parallelization: breaking down tasks and running multiple subtasks concurrently
+                - INPUT --> COORDINATOR --> LLM1 --> AGGREGATOR --> OUT 
+                                        --> LLM2 -->
+                                        --> LLM3 -->
+            - Orchestrator-worker: complex task are broken down dynamically and combined
+                - INPUT --> Orchestrator --> LLM1 --> Synthesizer --> OUT 
+                                         --> LLM2 -->
+                                         --> LLM3 -->
+                    - LLM decides how to break down the tasks that run in parallel
+                    - LLM decides how to combine the results and output it 
+            - Evaluator-optimizer: LLM output is validated by another
+                - also called LLM as a judge
+                - INPUT --> LLM GENERATOR       --solution->            LLM EVALUATOR --accepted--> OUT
+                                          <--rejected with feedback--
+
+
