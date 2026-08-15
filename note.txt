@@ -1,8 +1,28 @@
-models used:
-    - gpt-5.4-nano
-    - gpt-5.4-mini
-    - gpt-5.4
-    
+LLM Providers:
+    -- OPENAI
+        - gpt-5.4-nano
+        - gpt-5.4-mini
+        - gpt-5.4
+    -- ANTHROPIC
+        - claude haiku
+        - claude sonnet
+        - claude opus
+        - claude fable
+    -- GEMINI
+        - gemini flash lite
+        - gemini flash
+        - gemini pro
+
+Multiple LLM Providers / Aggregators
+    - Groq
+    - OpenRouter
+
+model reasoning effort:
+    - none
+    - low
+    - medium
+    - high
+    - xhigh
 
 Qualified for:
     - AI Engineer
@@ -98,3 +118,24 @@ Agentic system
                                           <--rejected with feedback--
 
 
+Risk of Agent Framework:
+    - Unpredictable path 
+    - Unpredictable output
+    - Unpredictable costs
+
+Risk Mitigation
+    -- Monitor (Observability, Evals)
+        - evaluation against business & technical goals
+    -- Guardrails: ensures your agent behave safely, consistently, and within your intended boundaries
+        -- evaluate inputs and output for consistency
+
+Agent Trap:
+    -- I need an agent for my business, instead of I need an agent to solve this business problems
+    -- Not incorporating business goal evaluation to confirm the agent is effective
+    -- Anthropomorphizing: treating agent like they are humans
+        - Agent architectures that assign human like responsibilities to agent 
+        - Trading manager agent should not translate to the below human-like architecture ==>
+            Market research agent + Trader Agent + Risk Manager Agent 
+        - solution:
+            - start simple with just one LLM and measure performance against a business obejective
+            - then diveide into more LLM calls to improve performance
