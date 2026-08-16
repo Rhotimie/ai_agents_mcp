@@ -74,14 +74,29 @@ tool_map = {
 }
 
 
-def handle_tool_calls(tool_calls):
+def handle_tool_calls(tool_calls, already_called=None):
+    """Run the tools the model asked for.
+
+    Pass a set as `already_called` to make tools fire at most once per conversation turn.
+    The evaluator can send the same message back for a second attempt, and without this we
+    would push the same notification twice for one visitor message.
+    """
     results = []
     for tool_call in tool_calls:
         tool_name = tool_call.function.name
         arguments = json.loads(tool_call.function.arguments)
-        print(f"Tool called: {tool_name}", flush=True)
-        tool = tool_map.get(tool_name)
-        result = tool(**arguments) if tool else "Unknown tool: " + tool_name
+        signature = (tool_name, json.dumps(arguments, sort_keys=True))
+
+        if already_called is not None and signature in already_called:
+            print(f"Tool skipped, already called this turn: {tool_name}", flush=True)
+            result = "OK"
+        else:
+            print(f"Tool called: {tool_name}", flush=True)
+            tool = tool_map.get(tool_name)
+            result = tool(**arguments) if tool else "Unknown tool: " + tool_name
+            if already_called is not None:
+                already_called.add(signature)
+
         results.append(
             {"role": "tool", "content": json.dumps(result), "tool_call_id": tool_call.id}
         )

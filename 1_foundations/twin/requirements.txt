@@ -2,4 +2,5 @@ requests
 gradio
 pypdf
 openai
+pydantic
 python-dotenv

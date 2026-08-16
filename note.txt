@@ -1,3 +1,8 @@
+PRODUCTS BUILT:
+    - Digital Twin(Document QA System) 
+        -- Added Evaluator-optimizer pattern / Guardrails
+
+
 LLM Providers:
     -- OPENAI
         - gpt-5.4-nano
@@ -29,45 +34,50 @@ Qualified for:
     - Applied AI Engineer
     - FDE Engineer
 
-https://marketstack.com
-    - allows to retrieve stock prices
+WEBSITES:
+    https://marketstack.com
+        - allows to retrieve stock prices
+    https://render.com/
+        - allows for free deployment of gradio apps since huggingfaces spaces deployment is no longer free
 
-https://n8n.io/
-    - build no code agents
-    - Exercise autonomous characteristic of a portfolio
-    - https://user_name.app.n8n.cloud/home/workflows
-        - select "build a workflow"
-        - add chat
-        - add ai agent
-        - Add LLM: gemini
-        - Add memory: simple
-        - Add tool: 
-            - marketstack
-                - select latest filter
-                - Ticker: Defined automatically by the model
-                - selct return all
-            - Google sheet
-                - Description: Get row(s) in sheet in Google Sheets to retrieve my stock portfolio details
-                - Operation: Get rows
-                - Document: Investment, sheet1
-            - Google Sheets
-                - Description: Append row(s) in sheet in Google Sheets in order to add a new trade with a new quantity of your choosing
-                - Operation: Append rows
-                - Document: Investment, sheet1
-                - Values to Send
+    https://n8n.io/
+        - build no code agents
+        - Exercise autonomous characteristic of a portfolio
+        - https://user_name.app.n8n.cloud/home/workflows
+            - select "build a workflow"
+            - add chat
+            - add ai agent
+            - Add LLM: gemini
+            - Add memory: simple
+            - Add tool: 
+                - marketstack
+                    - select latest filter
                     - Ticker: Defined automatically by the model
-                    - Shares: Defined automatically by the model
+                    - selct return all
+                - Google sheet
+                    - Description: Get row(s) in sheet in Google Sheets to retrieve my stock portfolio details
+                    - Operation: Get rows
+                    - Document: Investment, sheet1
+                - Google Sheets
+                    - Description: Append row(s) in sheet in Google Sheets in order to add a new trade with a new quantity of your choosing
+                    - Operation: Append rows
+                    - Document: Investment, sheet1
+                    - Values to Send
+                        - Ticker: Defined automatically by the model
+                        - Shares: Defined automatically by the model
 
-        - Chat sequence:
-            - What is the value of my stock portfolio
-                -Actions:
-                    - looks up cmp os per share in marketstack and provides sum total of your investment sheet shares
-            - Please come with a suggestion of an investment to balance up my portfolio. Add your suggestion to my sheet; you decide the ticker and the number of shares
-                -Action:
-                    - Added 10 shares of KO to my portfolio
-            - Yes please add something defensive to balance, of your choosing
-                -Action:
-                    - Added 5 shares of JNJ to my portfolio
+            - Chat sequence:
+                - What is the value of my stock portfolio
+                    -Actions:
+                        - looks up cmp os per share in marketstack and provides sum total of your investment sheet shares
+                - Please come with a suggestion of an investment to balance up my portfolio. Add your suggestion to my sheet; you decide the ticker and the number of shares
+                    -Action:
+                        - Added 10 shares of KO to my portfolio
+                - Yes please add something defensive to balance, of your choosing
+                    -Action:
+                        - Added 5 shares of JNJ to my portfolio
+
+    https://render.com/
 
 LLM: data science model that accepts inputs and generate most probabilistic output sequence
 
@@ -176,4 +186,21 @@ Tools / Function calling: gives LLM abilities
     - lookup stock prices
     - call external APIs 
     - read, update, create files
+
+context engineering:
+    The art of providing all the context for the task to be plausibly solvable by the LLM.
+    context:
+        - instructions / system prompt: overall framing of what the agent has to do
+        - user prompt: current message to llm / question
+        - Available tools
+        - structured output: formating output in a predefined manner, accessible through tools
+        - Retrieved information (RAG): querying useful relevant information from knowledge base of extra data and shove it into the prompt
+        - state / history (short-term memory): conversation history
+        - long-term memory: any other information from prior conversations stored that might be relevant, accessible through tools, RAG, system prompt
+    refernce:
+        https://www.philschmid.de/context-engineering
+
+
+
+
 
