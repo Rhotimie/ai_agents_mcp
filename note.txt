@@ -1,6 +1,7 @@
 PRODUCTS BUILT:
     - Digital Twin(Document QA System) 
         -- Added Evaluator-optimizer pattern / Guardrails
+        -- Added terminal UI(TUI), with tools to manage checklist
 
 
 LLM Providers:
