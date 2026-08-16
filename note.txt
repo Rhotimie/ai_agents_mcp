@@ -76,7 +76,9 @@ Agents:
     - ** AI systems where LLM controls the workflow **
     - LLM with tools in a loop to achieve a work flow
 
-Agentic system
+Agentic system 
+    Agentic AI involves building harness around LLMs, crafting the inputs and interpreting the output, in a loop so that they can use tools, 
+        and be autonomous
     reference:
         https://www.anthropic.com/engineering/building-effective-agents
 
@@ -139,3 +141,39 @@ Agent Trap:
         - solution:
             - start simple with just one LLM and measure performance against a business obejective
             - then diveide into more LLM calls to improve performance
+
+AGENT LANDSCAPE & AI RELATED OFFERINGS 
+    - Agent Builders: allow non-technical and business people to build AI Agents
+        - n8n
+        - ElevenLabs 
+        - OpenAI Agent builder 
+        - CrewAI studio
+    - Agent Products: allow non-technical and business people to use AI Agents
+        - Claude code
+        - Cowork (poerpoint presentation, excel documents, ...)
+        - Openclaw 
+        - Claude design: agent version of figma 
+    - Runtimes: Technical people can execute AI Agents 
+        - AWS Lambda
+        - AWS Bedrock Agent core 
+        - Claude Managed Agents
+        - Vertex AI Agent engine
+    - Agent Frameworks: helper code that makes it easier to create Agents based on LLM calls
+        - OpenAI Agents SDK (light weight)
+        - CrewAI (batteries included)
+        - LangGragh / LangChain 
+        - Google ADK (light weight)
+        - AWS Strands Agents 
+
+Agent Frameworks helps with
+    - Orchestration: chaining together LLM calls 
+    - Tool calling: equipping LLM with abilities, including with MCP 
+    - Constructing LLM inputs and interpreting LLM output - inclusing a technique called structured output
+
+
+Tools / Function calling: gives LLM abilities
+    - query database
+    - lookup stock prices
+    - call external APIs 
+    - read, update, create files
+
