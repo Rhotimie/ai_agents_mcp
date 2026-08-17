@@ -1,0 +1,22 @@
+- Digital Twin(Document QA System) 
+    -- Added Evaluator-optimizer pattern / Guardrails
+    -- Added terminal UI(TUI), with tools to manage checklist
+- Multi-Agent Sales Team(Agent Orchestration)
+    -- automated sales outreach 
+    -- sales development reps: can draft emails and send 
+    -- Evaluations:
+        - how many sent emails are opened and interacted with
+        - how many deals are closed through this 
+        - revenue growth percent
+    --Exercise:
+        -- when recipient email see, the mail and repy, extend this sales agent to continue the conversation and possibly close the deals 
+        -- try with telegram bot, for an e-commerce that can hold conversation with customers, recomment products and links that resonates
+            with the interest
+        -- add agentic rag to search database
+- Deep research agent 
+    - could help research the competitors you aspire to be are doing that you want to adopt
+    - sub agents:
+        - search agents 
+        - planner agents 
+        - writer agent 
+        - emailer agent
