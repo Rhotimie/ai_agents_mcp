@@ -16,7 +16,11 @@
 - Deep research agent 
     - could help research the competitors you aspire to be are doing that you want to adopt
     - sub agents:
-        - search agents 
-        - planner agents 
-        - writer agent 
-        - emailer agent
+        - The Search Agent: searches the web for information
+        - The Planner Agent: given a question, comes up with a list of searches that should be made
+        - The Writer Agent: writes a robust report
+        - The Emailer Agent: crafts and sends an email
+
+
+
+
