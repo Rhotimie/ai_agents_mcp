@@ -230,6 +230,25 @@ OpenAI Agent SDK:
         - trace(): to track the Agent
         - Runner.run() Application level turn, keeps looping until it reaches a stopping point, if provided tools
 
+    Agent class Parameters used:
+        - name 
+        - instructions
+        - model
+        - tools 
+        - handoffs
+        - model_settings : for defining must used tools
+        - output_type
+        - output_guardrails
+        - mcp_servers
+
+    Runner.run Parameters used:
+        - starting_agent
+        - input
+        - context
+        - run_config
+        - 
+
+
 Agent Orchestration:
     -- Orchestrating agent with code
     -- Orchestrating agent with llm(more powerful and autonomous)
@@ -240,5 +259,7 @@ Agent Orchestration:
             - coding agent
             - research agent
 
+MCP: gives you super simple easy way to use tools built by somebody else
 
+sandbox: helps with debugging errors 
 
