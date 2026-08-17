@@ -2,6 +2,18 @@ PRODUCTS BUILT:
     - Digital Twin(Document QA System) 
         -- Added Evaluator-optimizer pattern / Guardrails
         -- Added terminal UI(TUI), with tools to manage checklist
+    - Multi-Agent Sales Team(Agent Orchestration)
+        -- automated sales outreach 
+        -- sales development reps: can draft emails and send 
+        -- Evaluations:
+            - how many sent emails are opened and interacted with
+            - how many deals are closed through this 
+            - revenue growth percent
+        --Exercise:
+            -- when recipient email see, the mail and repy, extend this sales agent to continue the conversation and possibly close the deals 
+            -- try with telegram bot, for an e-commerce that can hold conversation with customers, recomment products and links that resonates
+                with the interest
+            -- add agentic rag to search database
 
 
 LLM Providers:
@@ -201,7 +213,32 @@ context engineering:
     refernce:
         https://www.philschmid.de/context-engineering
 
+AsyncIO: coperative multitasking
+Multi-threading: pre-emptive multitasking
 
+
+OpenAI Agent SDK:
+    - Lightweight and flexible
+    - stays out of the way 
+    - makes common activities easy
+
+    Terminologies:
+        - Agent(class): represent a particular LLM(any model), with system prompts and tools
+            - could also have sub-agent like the instance above
+        - Agent as tools and Handoffs: Agent mechanisms to collaborate and exchange informations
+        - Guardrails: represent controls
+        - trace(): to track the Agent
+        - Runner.run() Application level turn, keeps looping until it reaches a stopping point, if provided tools
+
+Agent Orchestration:
+    -- Orchestrating agent with code
+    -- Orchestrating agent with llm(more powerful and autonomous)
+        -- via Tools: control passes back; A -> B -> A
+        -- via Handoffs: control passes across from A permanently to another B; A -> B
+
+        -- examples: 
+            - coding agent
+            - research agent
 
 
 
