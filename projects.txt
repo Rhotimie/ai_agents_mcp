@@ -22,6 +22,7 @@
         - The Emailer Agent: crafts and sends an email
 
 - research agent(crewai)
-
+- debater agents(crewai)
+- financial_researcher agents(crewai)
 
 
