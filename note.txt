@@ -273,8 +273,8 @@ CrewAI CORE CONCEPTS
         - role: purpose of the agent
         - goal: what it is trying to achieve and it's success
         - backstory: what background story might be relevant to the agent
-        - tools:
-            ref: https://docs.crewai.com/v1.15.14/en/concepts/tools
+        - llm
+
 
     - Task(more like a user prompt): 
         - specifc assignment to be carried out
@@ -287,6 +287,13 @@ CrewAI CORE CONCEPTS
     - crew(bunch of agents and tasks):
         - sequential(similar to orchestration by code): run tasks in the order they are defined
         - hierarchical(similar to orchestration by LLM): use a manager LLM to assign, decide the order that they are run in
+
+        - agents 
+            - tools:
+                ref: https://docs.crewai.com/v1.15.14/en/concepts/tools
+            - memory
+        - tasks
+            - output_pydantic
 
 YAML configuration:
     - Agents and task can be created by code, setting the backstory, description, expected output, etc 

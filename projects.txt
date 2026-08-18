@@ -22,7 +22,16 @@
         - The Emailer Agent: crafts and sends an email
 
 - research agent(crewai)
+    - sequential process
 - debater agents(crewai)
+    - sequential process
 - financial_researcher agents(crewai)
-
+    - added native tool
+    - used crew context
+    - sequential process
+- financial_researcher agents(crewai)
+    - added structured output
+    - used custom tool
+    - added hierarchical process by add manager agents
+    - added memory
 
