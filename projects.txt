@@ -21,6 +21,7 @@
         - The Writer Agent: writes a robust report
         - The Emailer Agent: crafts and sends an email
 
+- research agent(crewai)
 
 
 

@@ -198,8 +198,9 @@ context engineering:
 AsyncIO: coperative multitasking
 Multi-threading: pre-emptive multitasking
 
-
+-------------------------------------------------
 OpenAI Agent SDK:
+-------------------------------------------------
     - Lightweight and flexible
     - stays out of the way 
     - makes common activities easy
@@ -245,3 +246,41 @@ MCP: gives you super simple easy way to use tools built by somebody else
 
 sandbox: helps with debugging errors 
 
+------------------------------------------
+CREWAI
+------------------------------------------
+Offerings:
+    - CrewAI AMP / Enterprise: multi-agent platform for deploying, running and monitoring Agentic AI 
+    - CrewAI Studio: A no-code / low-code product for creating multi-agent solutions, similar to n8n 
+    - CrewAI open-source framework: orchestrate high performing AI agents with ease and scale 
+
+CrewAI framework:
+    It is lightweight but more opinionated framework the OpenAI Agents SDK, more terminology and marginally more prescriptive
+    - CrewAI Crews(the intelligence): 
+        Autonomous solutions with AI teams of Agents with different roles 
+        crew are the "teams" that do the heavy lifting. 
+        you can trigger a crew to tackle a complex problem requiring creativity and collaboration
+    - CrewAI Flows(the backbone):
+        structured automations by dividing complex tasks into precise workflows
+        Think of a flow as the "manager" or the "process definitions" of your application.
+        it defines the steps, the logic, and how data moves through your system.
+
+CrewAI CORE CONCEPTS
+    - Agent(autonomous units with an LLM, a role, a goal, a backstory, memory, tools):
+        - role: purpose of the agent
+        - goal: what it is trying to achieve and it's success
+        - backstory: what background story might be relevant to the agent
+
+    - Task(more like a user prompt): 
+        - specifc assignment to be carried out, with a description, expected output, agent
+
+    - crew(bunch of agents and tasks):
+        - sequential(similar to orchestration by code): run tasks in the order they are defined
+        - hierarchical(similar to orchestration by LLM): use a manager LLM to assign, decide the order that they are run in
+
+YAML configuration:
+    - Agents and task can be created by code, setting the backstory, description, expected output, etc 
+    - or define each in yaml file that's provided when you create the project
+
+crewai traces enable:
+    - turn on traces

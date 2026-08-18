@@ -44,6 +44,8 @@ htmlcov/
 .coverage.*
 .cache
 .vscode
+.claude
+.agents
 nosetests.xml
 coverage.xml
 *.cover
