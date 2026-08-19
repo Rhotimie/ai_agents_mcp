@@ -77,6 +77,9 @@ WEBSITES:
 
     https://render.com/
 
+    https://smith.langchain.com/
+        - langchain frameworks Observability
+
 LLM: data science model that accepts inputs and generate most probabilistic output sequence
 
 Agents:
@@ -286,7 +289,7 @@ CrewAI CORE CONCEPTS
 
     - crew(bunch of agents and tasks):
         - sequential(similar to orchestration by code): run tasks in the order they are defined
-        - hierarchical(similar to orchestration by LLM): use a manager LLM to assign, decide the order that they are run in
+        - hierarchical(similar to orchestration by LLM via tool): use a manager LLM to assign, decide the order that they are run in
 
         - agents 
             - tools:
@@ -309,5 +312,55 @@ steps to creating vrewai project:
     - complete the crew.py module to create the Agents, Tasks and Crew, referencing the config
     - update main.py to set inputs
     - crewai run
+
+
+------------------------------------------
+LANGCHAIN & LANGGRAPH
+------------------------------------------
+Products:
+    - Langchain: The agent framework: create_agent, models, tools, middleware
+        - langchain core
+        - langchain-openai
+    - LangGragh: low level Orchestration that manages graph, state, persistence, checkpointer, edges, Memory
+        - a low level orchestration framework and runtime for stateful, log-running agents
+        - orchestrate steps(building blocks) of a workflow represented as a graph.
+        - a handful of nodes(does the work), which are just Python functions, joined by edges that decide what runs next
+        - edges determines what happens next, when a node completest it's work
+        - keeps track of state(represent current snapshot fo the application) and memory
+        - holds a shared object called the state, passes it from node to node, and can save a snapshot at 
+            every step so your application can remember and recover
+        - The state is the object that flows through the graph
+        - A reducer is a small function that says how to combine the old value with the new one
+        - reducer enables Langgraph to run multiple nodes concurrently and combine state without overwriting
+        -super steps:
+            - when you invoke a graph, it involves running a number of super steps
+            - super steps: is considered as a single iteration over the gragh nodes. Nodes that run in parallel are part of the 
+                same super-step, while node that run sequentially belongs to separate super steps
+            - reducers merge update within a run; the checkpointer carries State between runs
+    - LangSmith: Observability, evals, and monitoring for agents
+        - LangSmith records every model and tool call so you can see exactly what your graph did
+        - Every LangChain and LangGraph run is then traced automatically with no change to your code
+    - LangSmith Deployment: managed infrastructure for long running agents
+
+Five steps to creating a graph:
+    - define the class that represent your state
+    - start the graph builder
+    - create node(unit of work)
+    - define edges
+    - compile the graph
+
+Adding tools: a node, a condition, and a loop
+    - To let the model use tools, we add two prebuilt pieces. 
+    - ToolNode is a node that runs whatever tools the model asked for. 
+    - tools_condition is a ready made router that sends the flow to the tools node when the model wants a tool, 
+        and to the end when it is finished.
+    - Nodes do not have to be part of the tool loop. Any function can be a node, including one that makes its own LLM call.
+
+Memory
+    - MemorySaver: keeps everything in memory, which vanishes when the program stops. 
+    - SqLiteSaver: For something durable we swap in the SQLite checkpointer, which writes to a database file. 
+    - thread_id : the config key that files and reloads a conversation
+    - get_state and get_state_history: inspect every snapshot
+    - Time travel: rerun the graph from any earlier checkpoint_id
 
 

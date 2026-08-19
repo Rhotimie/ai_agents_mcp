@@ -53,3 +53,6 @@
         - docker
         - traces
         - simple account management system for a trading simulation platform
+
+- LANGCHAIN & LANGGRAPH PROJECTS:
+    - 
