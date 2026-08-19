@@ -56,9 +56,18 @@
 
 - LANGCHAIN & LANGGRAPH PROJECTS:
     - deep_agent_research
-        - create_deep_agent with two sub-agents (vehicle-researcher, slide-maker) delegated to via the built-in task tool, plus write_todos/write_file planning tools.
-        - FilesystemBackend(virtual_mode=True) sandboxing file I/O, and an Agent Skill (SKILL.md) giving the slide-maker its house style through progressive disclosure.
-        - init_chat_model("google_genai:…") for one-line provider switching, @tool for create_slide, GoogleSerperRun for web search, and InMemoryRateLimiter to pace the fan-out.
-        - SqliteSaver checkpointer keyed by thread_id — persistent memory, so a later process resumes the conversation without re-researching; LangSmith tracing comes free from the env.
-
+        - vehicle-researcher, slide-maker
+        - create_deep_agent with two sub-agents, plus write_todos/write_file planning tools
+        - FilesystemBackend, sandboxing file I/O, and an Agent Skill (SKILL.md) giving the slide-maker its house style through progressive disclosure.
+        - create_slide tool, GoogleSerperRun for web search, and InMemoryRateLimiter to pace the fan-out.
+        - Persistent memory, so a later process resumes the conversation without re-researching
+        - LangSmith tracing comes free from the env.
+    - Sidekick:
+        - Autonomous AI coworker: plans and uses tools, checks it's work and keep going
+        - Your co-worker: brief it with a task and your definition of success
+        - real world tools: a live browser, a file system, search and push notification
+        - classic agentic use case: create_agent with tools, memory, middleware(provides todo list )
+        - Guardrails: PII redaction and a hard budget cap, each one line of middleware
+        - human-in-the-loop: pauses for your approval, and can hand you the browser
+        - Evaluator: your own loop judges each reply against your success criteria
 
