@@ -363,4 +363,8 @@ Memory
     - get_state and get_state_history: inspect every snapshot
     - Time travel: rerun the graph from any earlier checkpoint_id
 
-
+DeepAgents: Three things come built in. 
+    - A planning tool, so the agent can write itself a todo list and work through it. 
+    - A filesystem, so it can save and reread its working notes rather than holding everything in the conversation. 
+    - Sub-agents, so it can hand a focused piece of work to a helper with its own clean context. You supply the intent, 
+        and the harness supplies the structure.
