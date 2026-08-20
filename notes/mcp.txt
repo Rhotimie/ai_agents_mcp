@@ -1,4 +1,15 @@
+I meant summarize the video content with number 112
+
+WEBSITES:
+    Before procpopular marketplaces for what's out there on MCP:
+        https://glama.ai/mcp  
+        https://smithery.ai/servers 
+
 MCP: Model Context Protocol
+
+MCP keywords
+=====================
+mcp, context7, MCPServer, hosted_mcp, HostedMCP, modelcontextprotocol, stdio_client, MultiServerMCP, langchain_mcp, fastmcp, npx
 
 Definition of MCP: 
     A standardized protocol for integrating **tools**, resources, prompts into AI agents, serving as a specification rather than an agent framework.
@@ -11,19 +22,52 @@ Components of MCP:
         - HOST: an LLM app/software/application like claude or our agentic platform
         - MCP client lives inside the host and connect 1:1 to MCP server
         - MCP SERVER: provides tools, context and prompts
+            - local
+                - stdio / Streamable http
+            - remote: 
+                - stdio / Streamable http
+                - Examples:
+                    - context7: helps LLM to understand information about latest APIs
+                    - like gira remote server
 
 Ecosystem and Adoption: 
     MCP has fostered a vast ecosystem of tools, though the numerous choices can be overwhelming.
-
 Importance of Standards: 
     Having a common standard like MCP enhances interoperability among different tools and promotes innovation within the AI community.
-
 Skepticism and Realism: 
     While MCP is an exciting development, it is crucial to view it realistically as merely a standard, with true innovation stemming from the tools that use it.
 
 Examples:
     playwright: by microsoft
+    MCP Server File System: by Anthropic
 
 Functionality of the MCP Server:
-    The MCP server performs two main functions: it can list tools and execute calls to the tools.
+    The MCP server performs two main functions: it can list tools and execute calls to the tools
+        - by calling APIs running somewhere else with the json description we already have
+        - already present locally like MCP Server File System
+    What runs on our local machine is what describe the tools to our LLM to understand via NLP
 
+Node-Based MCP (Multi-Client Protocol) servers and the communication methods used between MCP clients and servers.
+
+    MCP Structure: 
+        An MCP client connects to an MCP server, which provides tools requiring API requests. The server's primary 
+            functions are to list available tools and call specific tools.
+
+    Transport Mechanisms:
+        STDIO: This simple transport method allows the MCP client to communicate with a separate process (like a Python or JavaScript program) 
+            via standard input/output, commonly used for local MCP servers.
+        Streamable HTTP: This method employs an internet connection for remote MCP servers, facilitating data streaming and replacing older 
+            Server-Sent Events (SSE).
+    Choosing the Right Mechanism: 
+        A guideline is provided: use STDIO for local servers, while Streamable HTTP is necessary for remote servers.
+    Parameters for MCP Servers: 
+        Parameters for connecting to an MCP server, such as commands for launching local processes with STDIO and the URL for remote 
+            servers with Streamable HTTP.
+        Common Program Types: 
+            Program types that can operate via STDIO: 
+                - Python programs using UVX(uv tool run): {'command': 'uvx', 'args': ['mcp-server-fetch']}
+                - JavaScript programs using NPX(node run): {'command': 'npx', 'args': ['@playright/mcp@latest']}
+                - Docker containers: for servers packaged as container
+                highlighting the ease of running these in isolated environments.
+            STREAMABLE HTTP; a remote url: 
+                - {'url': 'https://mcp.context7.com/mcp', 'timeout': 60}
