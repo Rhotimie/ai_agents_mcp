@@ -4,6 +4,12 @@ WEBSITES:
     Before procpopular marketplaces for what's out there on MCP:
         https://glama.ai/mcp  
         https://smithery.ai/servers 
+        https://app.tavily.com/playground
+            - Search API built for LLMs  
+        https://www.massive.com/
+            - formerly Polygon.io
+            - Modernizing Wall St. one market at a time.
+            - market financial data provider
 
 MCP: Model Context Protocol
 
@@ -71,3 +77,47 @@ Node-Based MCP (Multi-Client Protocol) servers and the communication methods use
                 highlighting the ease of running these in isolated environments.
             STREAMABLE HTTP; a remote url: 
                 - {'url': 'https://mcp.context7.com/mcp', 'timeout': 60}
+
+
+HOSTED/MANAGED MCP:
+    - often provided by LLM providers at point of inference
+    - paid service
+
+context engineering:
+    The art of providing all the context for the task to be plausibly solvable by the LLM.
+    context:
+        - instructions / system prompt: overall framing of what the agent has to do
+        - user prompt: current message to llm / question
+        - Available tools
+        - structured output: formating output in a predefined manner, accessible through tools
+        - Retrieved information (RAG): querying useful relevant information from knowledge base of extra data and shove it into the prompt
+        - state / history (short-term memory): conversation history
+        - long-term memory: any other information from prior conversations stored that might be relevant, accessible 
+            from the database, tools(Agentic RAG), RAG, system prompt
+    refernce:
+        https://www.philschmid.de/context-engineering
+        /ai_engineer/agents/6_mcp/3_lab3.ipynb
+
+TAVILY VS CONTEXT7 vs SERPER
+---------------------
+Both fight stale training data, but they retrieve different kinds of knowledge, and the failure they prevent is different.
+┌────────────┬────────────────────────────────────────────────────────┬────────────────────────────────────────────────────────┐
+│            │                         Tavily                         │                        Context7                        │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ What it is │ Search API built for LLMs                              │ Documentation-lookup MCP server                        │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Corpus     │ The open web, live                                     │ Indexed docs/source of specific libraries              │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Query      │ Natural language question                              │ Library + topic (gradio, "Blocks API")                 │
+│ shape      │                                                        │                                                        │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Returns    │ Ranked snippets + synthesized answer, with URLs        │ Version-pinned doc excerpts and API signatures         │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Freshness  │ Minutes — whatever is live now                         │ Tracks library releases                                │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Precision  │ Broad, sometimes noisy                                 │ Narrow, high signal-to-noise                           │
+├────────────┼────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ Fails when │ Answer isn't publicly indexed, or SEO junk outranks    │ Library isn't indexed, or your version predates the    │
+│            │ truth                                                  │ index                                                  │
+└────────────┴────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────┘                                               │ index
+

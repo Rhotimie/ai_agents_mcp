@@ -198,9 +198,11 @@ context engineering:
         - structured output: formating output in a predefined manner, accessible through tools
         - Retrieved information (RAG): querying useful relevant information from knowledge base of extra data and shove it into the prompt
         - state / history (short-term memory): conversation history
-        - long-term memory: any other information from prior conversations stored that might be relevant, accessible through tools, RAG, system prompt
+        - long-term memory: any other information from prior conversations stored that might be relevant, accessible 
+            from the database, tools(Agentic RAG), RAG, system prompt
     refernce:
         https://www.philschmid.de/context-engineering
+        /ai_engineer/agents/6_mcp/3_lab3.ipynb
 
 AsyncIO: coperative multitasking
 Multi-threading: pre-emptive multitasking
