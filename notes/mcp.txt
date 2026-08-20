@@ -1,0 +1,29 @@
+MCP: Model Context Protocol
+
+Definition of MCP: 
+    A standardized protocol for integrating **tools**, resources, prompts into AI agents, serving as a specification rather than an agent framework.
+
+Comparison with LangChain: 
+    MCP allows broader access to tools compared to LangChain, which restricts its usage to its own framework.
+
+Components of MCP: 
+    It consists of the MCP host, client, and server, each with distinct roles in interaction.
+        - HOST: an LLM app/software/application like claude or our agentic platform
+        - MCP client lives inside the host and connect 1:1 to MCP server
+        - MCP SERVER: provides tools, context and prompts
+
+Ecosystem and Adoption: 
+    MCP has fostered a vast ecosystem of tools, though the numerous choices can be overwhelming.
+
+Importance of Standards: 
+    Having a common standard like MCP enhances interoperability among different tools and promotes innovation within the AI community.
+
+Skepticism and Realism: 
+    While MCP is an exciting development, it is crucial to view it realistically as merely a standard, with true innovation stemming from the tools that use it.
+
+Examples:
+    playwright: by microsoft
+
+Functionality of the MCP Server:
+    The MCP server performs two main functions: it can list tools and execute calls to the tools.
+

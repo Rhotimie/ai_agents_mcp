@@ -86,6 +86,7 @@ Agents:
     - AI systems that can do work for you independently
     - ** AI systems where LLM controls the workflow **
     - LLM with tools in a loop to achieve a work flow
+    - LLM + Harness(Tools + Loop + Goal)
 
 Agentic system 
     Agentic AI involves building harness around LLMs, crafting the inputs and interpreting the output, in a loop so that they can use tools, 
