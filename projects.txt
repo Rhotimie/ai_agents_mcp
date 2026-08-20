@@ -71,3 +71,13 @@
         - human-in-the-loop: pauses for your approval, and can hand you the browser
         - Evaluator: your own loop judges each reply against your success criteria
 
+- GOOGLE_ADK | AWS_STRAND_SDK | PYDANTIC_AI | MICROSOFT AGENT FRAMEWORK | AGNO | MASTRA-TYPESCRIPT-NATIVE-AGENT-FRAMEWORK:
+    - todo_management
+        - filesystem MCP server(File I/O)
+        - Gave access to read and write to file system
+        - A worker is handed one goal, to reach it, it writes its own **step** todos under that goal, 
+        - ticks each one off as it goes, and closes the goal at the end. 
+        - Under the hood the board is just a list of dicts (a goal has `parent_id` of None, a step points at its goal):
+
+
+
