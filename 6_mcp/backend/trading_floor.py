@@ -14,6 +14,7 @@ RUN_EVEN_WHEN_MARKET_IS_CLOSED = (
     os.getenv("RUN_EVEN_WHEN_MARKET_IS_CLOSED", "false").strip().lower() == "true"
 )
 USE_MANY_MODELS = os.getenv("USE_MANY_MODELS", "false").strip().lower() == "true"
+STAGGER_SECONDS = int(os.getenv("STAGGER_SECONDS", "20"))
 
 names = ["Warren", "George", "Ray", "Cathie"]
 lastnames = ["Patience", "Bold", "Systematic", "Crypto"]
@@ -27,8 +28,8 @@ if USE_MANY_MODELS:
     ]
     short_model_names = ["GPT 5.5", "DeepSeek V4", "Gemini 3.5 Flash", "Grok 4.3"]
 else:
-    model_names = ["gpt-5.4-mini"] * 4
-    short_model_names = ["GPT 5.4 mini"] * 4
+    model_names = ["gemini-3.5-flash-lite"] * 4
+    short_model_names = ["Gemini 3.5 Flash Lite"] * 4
 
 
 def create_traders() -> List[Trader]:
@@ -38,12 +39,25 @@ def create_traders() -> List[Trader]:
     return traders
 
 
+async def run_traders(traders: List[Trader]) -> None:
+    """Run the traders one at a time, pausing between them.
+
+    The traders share a model, and so share a single rate limit quota; running
+    them together overruns the requests per minute allowed on the free tier.
+    """
+    for index, trader in enumerate(traders):
+        await trader.run()
+        if index < len(traders) - 1:
+            await asyncio.sleep(STAGGER_SECONDS)
+
+
 async def run_every_n_minutes():
     add_trace_processor(LogTracer())
     traders = create_traders()
     while True:
         if RUN_EVEN_WHEN_MARKET_IS_CLOSED or is_market_open():
-            await asyncio.gather(*[trader.run() for trader in traders])
+            # await asyncio.gather(*[trader.run() for trader in traders])
+            await run_traders(traders)
         else:
             print("Market is closed, skipping run")
         await asyncio.sleep(RUN_EVERY_N_MINUTES * 60)

@@ -1,4 +1,5 @@
 from contextlib import AsyncExitStack
+from .accounts import Account
 from .accounts_client import read_accounts_resource, read_strategy_resource
 from .tracers import make_trace_id
 from agents import Agent, Tool, Runner, OpenAIChatCompletionsModel, trace
@@ -64,7 +65,7 @@ async def get_researcher_tool(mcp_servers, model_name) -> Tool:
 
 
 class Trader:
-    def __init__(self, name: str, lastname="Trader", model_name="gpt-5.4-mini"):
+    def __init__(self, name: str, lastname="Trader", model_name="gemini-3.5-flash-lite"):
         self.name = name
         self.lastname = lastname
         self.agent = None

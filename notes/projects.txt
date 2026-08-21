@@ -79,5 +79,18 @@
         - ticks each one off as it goes, and closes the goal at the end. 
         - Under the hood the board is just a list of dicts (a goal has `parent_id` of None, a step points at its goal):
 
+- autonomous_traders 
+    - commercial
+    - 6 MCP servers with 17 tools
+    - Agent interaction
+    - Autonomous and with evaluations
 
+    An equity trading simulation with four Traders and a Researcher, powered by a team of MCP servers and their tools and resources:
 
+    1. Our home-made Accounts server, written by engineering team
+    2. Push notifications, to alert us when something happens
+    3. Market data, for live or simulated share prices
+    4. Fetch, to read a web page through a local headless browser
+    5. Tavily, for web search
+    6. Memory, a knowledge graph the researcher writes to and reads back
+    7. Plus resources to read each trader's account and their investment strategy.
